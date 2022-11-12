@@ -1,5 +1,5 @@
 # Variables
-APP_NAME=app
+APP_NAME=makepy
 ROOT=$(shell pwd)
 
 ## Lint
@@ -25,6 +25,7 @@ lint:
 	@docker run --rm -v ${ROOT}:/app ${DOCKER_IMAGE_LINTER} " \
 		lint-commit ${LINT_COMMIT_TARGET_BRANCH} \
 		&& lint-markdown \
+		&& lint-yaml \
 		&& lint-python"
 
 .PHONY: shell
