@@ -1,10 +1,14 @@
 # Variables
-APP_NAME=makepy
+PACKAGE_NAME=makefilepy
 ROOT=$(shell pwd)
 
 ## Lint
 DOCKER_IMAGE_LINTER=alvarofpp/python:linter
 LINT_COMMIT_TARGET_BRANCH=origin/main
+
+## Test
+TEST_CONTAINER_NAME=${PACKAGE_NAME}_test
+TEST_COMMAND=pytest --cov=makepy tests/
 
 # Commands
 .PHONY: install-hooks
@@ -30,4 +34,16 @@ lint:
 
 .PHONY: shell
 shell:
-	@docker-compose run --rm ${APP_NAME} bash
+	@docker-compose run --rm ${PACKAGE_NAME} bash
+
+.PHONY: test
+test:
+	@docker run --rm -v ${ROOT}:/app \
+		--name ${TEST_CONTAINER_NAME} ${PACKAGE_NAME} \
+		${TEST_COMMAND}
+
+.PHONY: test-coverage
+test-coverage:
+	@docker run --rm -v ${ROOT}:/app \
+		--name ${TEST_CONTAINER_NAME} ${PACKAGE_NAME} \
+		/bin/bash -c "${TEST_COMMAND} && coverage report -m"

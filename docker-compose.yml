@@ -2,10 +2,10 @@
 version: '3.8'
 
 services:
-  makepy:
+  makefilepy:
     build:
       context: .
-    image: alvarofpp/makepy
-    container_name: makepy
+    image: makefilepy
+    container_name: makefilepy
     volumes:
       - .:/app
