@@ -12,3 +12,7 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 # Set environment variables
 ENV WORKDIR=/app
 WORKDIR ${WORKDIR}
+
+# Install package
+COPY . .
+RUN python3 setup.py install
