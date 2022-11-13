@@ -1,5 +1,6 @@
 ---
-name: Publish the package on PyPi
+name: cd
+run-name: Publish the package on PyPi
 
 on:
   release:
