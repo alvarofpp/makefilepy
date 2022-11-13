@@ -8,7 +8,7 @@ LINT_COMMIT_TARGET_BRANCH=origin/main
 
 ## Test
 TEST_CONTAINER_NAME=${PACKAGE_NAME}_test
-TEST_COMMAND=pytest --cov=makepy tests/
+TEST_COMMAND=pytest --cov=${PACKAGE_NAME} tests/
 
 # Commands
 .PHONY: install-hooks
