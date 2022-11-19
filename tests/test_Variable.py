@@ -16,3 +16,9 @@ class TestVariable(unittest.TestCase):
         value = 'testValue'
         variable = Variable(key=key, value=value)
         self.assertEqual(variable.build(), f'{key}={value}')
+
+    def test_reference(self):
+        key = 'test'
+        value = 'testValue'
+        variable = Variable(key=key, value=value)
+        self.assertEqual(variable.reference(), '${test}')

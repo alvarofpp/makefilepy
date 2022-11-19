@@ -9,3 +9,6 @@ class Variable(BaseModel):
 
     def build(self) -> str:
         return f'{self.key}={self.value}'
+
+    def reference(self) -> str:
+        return f'${{{self.key}}}'
